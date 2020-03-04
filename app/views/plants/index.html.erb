@@ -1,0 +1,6 @@
+<h1> Plants </h1>
+
+<% @plants.each do |plant| %>
+    <div>Name: <%= link_to plant.customer_name, plant %></div><br>
+    <div>Price: <%= plant.price %></div><br>
+<% end %>

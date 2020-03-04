@@ -10,6 +10,17 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header class='clearfix'>
+      <div class="nav">
+        <p><%= link_to "ShrubHub", :root %></p>
+        <p><%= link_to "Sell a Plant!", new_plant_path %></p>
+        <p><%= link_to "Cart", cart_path %></p>
+    </header>
+
+    <div class='content'>
+      <%= yield %>
+    </div>
+
   </body>
 </html>

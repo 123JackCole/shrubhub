@@ -2,14 +2,16 @@ Rails.application.routes.draw do
 
   root 'plants#index'
 
-  resources :comments, only: [:index, :show, :new, :create, :edit, :update]
-  resources :plants, only: [:index, :show, :new, :create, :edit, :update]
-  resources :orders, only: [:index, :show, :new, :create, :edit, :update]
-  resources :users, only: [:index, :show, :new, :create, :edit, :update]
+  resources :comments, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :plants, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :orders, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/login', to: 'sessions#create'
+  post '/logout', to: 'sessions#destroy', as: 'logout'
+
+  patch '/cart', to: 'cart#update'
 
   resource :cart, only: [:show] do
     put 'add/:plant_id', to: 'carts#add', as: :add_to

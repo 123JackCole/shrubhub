@@ -1,0 +1,11 @@
+<h1> Login </h1>
+
+<h2><%= flash[:notice] %></h2>
+
+<%= form_tag (login_path) do %>
+
+    <%= text_field_tag :username, '', :placeholder => 'Username' %>
+    <%= password_field_tag :password, '', :placeholder => 'Password' %>
+
+    <%= input type="Submit"%>
+<% end %>

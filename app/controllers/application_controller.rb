@@ -1,18 +1,30 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_cart
+    # before_action :authorized
+
+    helper_method :current_cart, :logged_in, :current_user
+
+    def login_user(user)
+        session[:user_id] = user.id
+    end
  
     def current_user
-        session[:name]
+        User.find_by(id:session(:user_id))
+        # session[:name]
+    end
+
+    def logged_in?
+        !!current_user
+    end
+
+    def authorized
+        unless logged_in?
+            flash[:notice] = "You must be logged in to see this page"
+            redirect_to login_path
+        end
     end
 
     def current_cart
-        session[:cart] ||= []
-    end
-
-    private
-
-    def require_login
-        redirect_to controller: 'sessions', action: 'new' unless current_user
+        session[:cart] ||= {}
     end
 
 end

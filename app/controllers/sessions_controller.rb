@@ -1,21 +1,24 @@
 class SessionsController < ApplicationController
+    skip_before_action :authorized, only[:new, :create]
 
     def new
     end
  
     def create
-        if !params[:name] || params[:name].empty?
-            return redirect_to(controller: 'sessions',
-                           action: 'new') 
+        @user = User.find_by(username: params[:username])
+        if @user && @user.authenticate(params[:password])
+            login_user(@user)
+            redirect_to @user
         else
-            session[:name] = params[:name]
-            # redirect_to controller: 'application', action: 'hello'
+            flash[:notice] = @user.errors.full_messages
+            redirect_to login_path
         end
     end
 
     def destroy
-        session.delete :name
-        # redirect_to controller: 'application', action: 'hello'
+        @user = User.find(session[:user_id])
+        @user.destroy
+        redirect_to login_path
     end
 
 end
