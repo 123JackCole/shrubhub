@@ -1,5 +1,7 @@
 class PlantsController < ApplicationController
 
+    skip_before_action :authorized, only: [:index, :show, :new, :create]
+
     def index
         @plants = Plant.all
     end

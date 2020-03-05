@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-
+    before_action :authorized
     helper_method :current_cart, :logged_in?, :current_user
 
     def login_user(user)

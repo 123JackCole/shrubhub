@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+    skip_before_action :authorized, only: [:new, :create]
     
     def index
         @users = User.all
@@ -18,6 +20,7 @@ class UsersController < ApplicationController
             redirect_to @user
         else 
             flash[:notice] = @user.errors.full_messages
+            render :new
         end
     end
 
@@ -37,8 +40,10 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        @user = User.find(params[:id])
+        @user = current_user
+        session.delete(:user_id)
         @user.destroy
+        redirect_to :root
     end
 
     private

@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+    skip_before_action :authorized, only: [:new, :create]
+
     def new
     end
  
@@ -9,15 +11,14 @@ class SessionsController < ApplicationController
             login_user(@user)
             redirect_to @user
         else
-            # flash[:notice] = "User does not exist"
-            # flash[:notice] = @user.errors.full_messages
+            flash[:notice] = "Username / Password combination does not exist"
             redirect_to login_path
         end
     end
 
     def destroy
-        @user = User.find(session[:user_id])
-        @user.destroy
+        session.delete(:user_id)
+        flash[:notice] = "Log Out Sucessful"
         redirect_to login_path
     end
 

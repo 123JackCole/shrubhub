@@ -1,6 +1,6 @@
 Username <%= @user.username %>
 
 <% if @user.id == session[:user_id] %>
+    <%= button_to "EDIT ACCOUNT", edit_user_path, method: :edit %>
     <%= button_to "DELETE ACCOUNT", "/users/delete", method: :delete %>
-    <!-- <%= button_to "LOGOUT", "/logout", method: :delete %> -->
 <% end %>
