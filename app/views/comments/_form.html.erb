@@ -1,0 +1,32 @@
+<%= form_for @comment do |f| %>
+
+    <%= f.label 'Plant Name' %>
+    <%= f.text_field :name %>
+    <br><br>
+    <%= f.label 'Plant Description' %>
+    <%= f.text_field :description %>
+    <br><br>
+    <%= f.label 'Light Instructions' %>
+    <%= f.text_field :light_instructions %>
+    <br><br>
+    <%= f.label 'Watering Instructions' %>
+    <%= f.text_field :water_instructions %>
+    <br><br>
+    <%= f.label 'Other Instructions' %>
+    <%= f.text_field :other_instructions %>
+    <br><br>
+    <%= f.label 'Price' %>
+    <%= f.number_field :price, step: 0.01 %>
+    <br><br>
+    <%= f.label 'Image URL' %>
+    <%= f.text_field :image %>
+    <br><br>
+    <%= f.submit %>
+
+<% end %>
+
+<% if flash[:notice]%>
+    <% flash[:notice].each do |notice| %>
+        <%= notice %>
+    <% end %>
+<% end %>

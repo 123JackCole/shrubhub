@@ -1,0 +1,22 @@
+<div>Plant Name: <%= @plant.name%></div><br>
+<div><img src="<%= @plant.image %>" width=40%></div><br>
+<div>Description: <%= @plant.description%></div><br>
+<div>Price: $<%= @plant.price %></div><br>
+<div>Light Instructions: <%= @plant.light_instructions %></div><br>
+<div>Watering Instructions: <%= @plant.water_instructions %></div><br>
+<div>Other Instructions: <%= @plant.other_instructions %></div><br>
+
+<div><%= button_to "Add to Cart", cart_path, params: { plant_id: @plant.id } %></div>
+
+<div><%= button_to "Remove From Cart", cart_path, params: { plant_id: @plant.id } %></div>
+
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= comment.username %></strong>
+    <br>
+    <p><%= comment.body %></p>
+    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+<% end %>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>

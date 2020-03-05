@@ -1,10 +1,19 @@
 <% @plants.each do |plant| %>
     <div>Plant Name: <%= link_to plant.name, plant %></div><br>
+    <div><img src="<%= plant.image %>" width=40%></div><br>
     <div>Description: <%= plant.description%></div><br>
     <div>Price: $<%= plant.price %></div><br>
     <div>Light Instructions: <%= plant.light_instructions %></div><br>
     <div>Watering Instructions: <%= plant.water_instructions %></div><br>
     <div>Other Instructions: <%= plant.other_instructions %></div><br>
 
-<div><img src="<%= plant.image %>" width=40%></div><br>
+    <div><%= button_to "Add to Cart", cart_path(plant.id) %></div>
+
+    <div><%= button_to "Remove From Cart", cart_path %></div>
+
+    <% if plant.user_id == current_user.id %>
+        <div><%= button_to "Edit Listing", edit_plant_path(plant.id), method: :get %></div>
+        <div><%= button_to "Delete Listing", "/plants/delete", method: :delete %></div>
+    <% end %>
+    <br><br>
 <% end %>

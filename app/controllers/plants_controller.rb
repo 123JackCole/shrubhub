@@ -40,22 +40,9 @@ class PlantsController < ApplicationController
     end
 
     def destroy
-        @plant = Plant.find(params[:id])
+        @plant = Plant.find_by(user_id:session[:user_id])
         @plant.destroy
-    end
-
-    def add_plant_to_cart(plant_id)
-        @item = Item.find(params[:id])
-        current_cart << @item.id
-    end
-
-    def get_plants_from_cart
-        @cart_items = Plant.find(cart.keys)
-        @total = 0
-        @cart_items.each do |plant|
-                price = cart[plant.id.to_s] * plant.price
-                @total += price
-        end
+        redirect_to :root
     end
 
     private
