@@ -13,11 +13,11 @@ class PlantsController < ApplicationController
     end
 
     def create
-        @plant = Plant.create(plant_params)
+        @plant = Plant.create(plant_params.merge(user: current_user))
         if @plant.valid?
             redirect_to @plant
         else
-            flash[:notice] = plant.errors.full_messages
+            flash[:notice] = @plant.errors.full_messages
             render :new
         end
     end
@@ -59,7 +59,7 @@ class PlantsController < ApplicationController
     private
 
     def plant_params
-        params.require(:plant).permit(:name)
+        params.require(:plant).permit(:name, :description, :image, :price, :light_instructions, :water_instructions, :other_instructions)
     end
 
 end

@@ -1,26 +1,26 @@
 <%= form_for @plant do |f| %>
 
-    <% f.label Plant Name %>
-    <% f.text_field :name %>
-
-    <% f.label Plant Description %>
-    <% f.text_field :description %>
-
-    <% f.label Light Instructions %>
-    <% f.text_field :light_instructions %>
-
-    <% f.label Watering Instructions %>
-    <% f.text_field :water_instructions %>
-
-    <% f.label Other Instructions %>
-    <% f.text_field :other_instructions %>
-
-    <!-- <% f.label Plant Image  %>
-    <% f.text_field : %> -->
-
-    <% f.label Price %>
-    <% f.number_field :price, step: 0.01 %>
-
+    <%= f.label 'Plant Name' %>
+    <%= f.text_field :name %>
+    <br><br>
+    <%= f.label 'Plant Description' %>
+    <%= f.text_field :description %>
+    <br><br>
+    <%= f.label 'Light Instructions' %>
+    <%= f.text_field :light_instructions %>
+    <br><br>
+    <%= f.label 'Watering Instructions' %>
+    <%= f.text_field :water_instructions %>
+    <br><br>
+    <%= f.label 'Other Instructions' %>
+    <%= f.text_field :other_instructions %>
+    <br><br>
+    <%= f.label 'Price' %>
+    <%= f.number_field :price, step: 0.01 %>
+    <br><br>
+    <%= f.label 'Image URL' %>
+    <%= f.text_field :image %>
+    <br><br>
     <%= f.submit %>
 
 <% end %>

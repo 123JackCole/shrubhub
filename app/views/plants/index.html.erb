@@ -1,6 +1,10 @@
-<h1> Plants </h1>
-
 <% @plants.each do |plant| %>
-    <div>Name: <%= link_to plant.customer_name, plant %></div><br>
-    <div>Price: <%= plant.price %></div><br>
+    <div>Plant Name: <%= link_to plant.name, plant %></div><br>
+    <div>Description: <%= plant.description%></div><br>
+    <div>Price: $<%= plant.price %></div><br>
+    <div>Light Instructions: <%= plant.light_instructions %></div><br>
+    <div>Watering Instructions: <%= plant.water_instructions %></div><br>
+    <div>Other Instructions: <%= plant.other_instructions %></div><br>
+
+<div><img src="<%= plant.image %>" width=40%></div><br>
 <% end %>

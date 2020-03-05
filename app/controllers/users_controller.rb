@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only[:new, :create]
     
     def index
         @users = User.all
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
         if @user.valid?
             redirect_to @user
         else 
-            flash[:messages] = @user.errors.full_messages
+            flash[:notice] = @user.errors.full_messages
         end
     end
 

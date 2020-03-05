@@ -2,10 +2,14 @@
 
 <h2><%= flash[:notice] %></h2>
 
-<%= form_tag (login_path) do %>
+<%= form_tag sessions_path do %>
 
+    <%= label_tag :username %>:
     <%= text_field_tag :username, '', :placeholder => 'Username' %>
+    <br><br>
+    <%= label_tag :password %>:
     <%= password_field_tag :password, '', :placeholder => 'Password' %>
+    <br><br>
+    <%= submit_tag 'Login'%>
 
-    <%= input type="Submit"%>
 <% end %>

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorized, only[:new, :create]
 
     def new
     end
@@ -10,7 +9,8 @@ class SessionsController < ApplicationController
             login_user(@user)
             redirect_to @user
         else
-            flash[:notice] = @user.errors.full_messages
+            # flash[:notice] = "User does not exist"
+            # flash[:notice] = @user.errors.full_messages
             redirect_to login_path
         end
     end

@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   get '/login', to: 'sessions#new', as: 'login'
-  post '/login', to: 'sessions#create'
-  post '/logout', to: 'sessions#destroy', as: 'logout'
+  post '/sessions', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
 
   patch '/cart', to: 'cart#update'
 
