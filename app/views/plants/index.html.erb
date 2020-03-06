@@ -12,8 +12,9 @@
         <div><%= button_to "Edit Listing", edit_plant_path(plant.id), method: :get %></div>
         <div><%= button_to "Delete Listing", "/plants/delete", method: :delete %></div>
     <% else %>
-        <div><%= button_to "Add to Cart", add_to_carts_path(current_user), method: "put", params: {plant_id: plant.id} %></div>
-        <div><%= button_to "Remove From Cart", orders_path %></div>
+        <div><%= button_to "Add to Cart", add_to_carts_path(current_user), method: "put", params: {this_plant_id: plant.id} %></div>
+        <!-- <div><%= button_to "Remove From Cart", orders_path %></div> -->
+        <br>
     <% end %>
     <br><br>
 <% end %>

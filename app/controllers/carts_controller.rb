@@ -1,16 +1,16 @@
 class CartsController < ApplicationController
 
     def show
-        @cart = Cart.find_by(user_id:params[:id])
+        @cart = Cart.find_by(user_id:current_user.id)
     end
 
     def add
-        @order = Order.create(cart_id: current_cart.id, plant_id: session[:plant_id])
+        @order = Order.create(cart_id: current_cart.id, plant_id: params[:this_plant_id])
         redirect_to cart_path(current_cart)
     end
 
     def remove
-        @order = Order.find(session[:order_id])
+        @order = Order.find_by(cart_id:current_cart) # Order.find(session[:order_id])
         @order.destroy
         redirect_to cart_path(current_cart)
     end
