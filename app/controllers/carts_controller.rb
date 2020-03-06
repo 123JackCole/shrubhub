@@ -9,6 +9,12 @@ class CartsController < ApplicationController
         redirect_to cart_path(current_cart)
     end
 
+    def remove
+        @order = Order.find(session[:order_id])
+        @order.destroy
+        redirect_to cart_path(current_cart)
+    end
+
     # def new
     #     @cart = Cart.new
     # end

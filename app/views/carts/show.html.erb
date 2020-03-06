@@ -1,14 +1,20 @@
 <h1> Your Cart </h1>
 <% @total = current_cart.total %>
-<% Order.all.where(cart_id: current_cart.id).map do |order| %>
+<% @plants = [] %>
+<% Order.where(cart_id: current_cart.id).map do |order| %>
 
+    <% @plants << order.plant_id %>
     <% @total += Plant.all.find(order.plant_id).price %>
 
 <% end %>
 
 <%= render "plants" %>
+<br>
+<% if @orders.length > 0 %>
+    <h2> Total: $<%= @total %></h2>
 
-<h2> Total: $<%= @total %></h2>
-
+    <!-- <h2><%= button_to "Checkout", :root, method: "delete", params: {plants: @plants} %></h2> -->
+<% end %>
+    
 
 

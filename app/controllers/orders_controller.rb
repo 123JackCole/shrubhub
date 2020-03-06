@@ -10,4 +10,10 @@ class OrdersController < ApplicationController
         end
     end
 
+    def destroy
+        @order = Order.find_by(cart_id:current_cart)
+        @order.delete
+        redirect_to cart_path(current_user)
+    end
+
 end
