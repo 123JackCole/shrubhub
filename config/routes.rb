@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :carts
   root 'plants#index'
 
+  resources :carts, only: [:show]
   resources :comments, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :plants, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :orders, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :orders, only: [:show, :new, :create, :edit, :update, :destroy]
   resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   get '/login', to: 'sessions#new', as: 'login'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   patch '/cart', to: 'cart#update'
 
-  resource :cart, only: [:show] do
+  resource :carts, only: [:show] do
     put 'add/:plant_id', to: 'carts#add', as: :add_to
     put 'remove/:plant_id', to: 'carts#remove', as: :remove_from
   end

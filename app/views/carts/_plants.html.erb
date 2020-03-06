@@ -1,0 +1,19 @@
+<% @orders = Order.where("cart_id = #{current_cart.id}") %>
+
+<% if @orders.length > 0 %>
+    <h2>Plants in your cart:</h2><br>
+<% else %>
+    <h2>You currently have no plants in your cart</h2>
+<% end %>
+<% @orders.each do |order| %>
+    <% @plant = Plant.find(order.plant_id) %>
+    <div>Plant Name: <%= link_to @plant.name, @plant %></div><br>
+    <div><img src="<%= @plant.image %>" width=40%></div><br>
+    <div>Description: <%= @plant.description%></div><br>
+    <div>Price: $<%= @plant.price %></div><br>
+    <div>Light Instructions: <%= @plant.light_instructions %></div><br>
+    <div>Watering Instructions: <%= @plant.water_instructions %></div><br>
+    <div>Other Instructions: <%= @plant.other_instructions %></div><br>
+    <br><br>
+    <div><%= button_to %></div>
+<% end %>

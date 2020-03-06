@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     before_action :authorized
-    helper_method :login_user, :current_user, :logged_in?, :current_cart
+    helper_method :login_user, :current_user, :current_cart, :logged_in?
 
     def login_user(user)
         session[:user_id] = user.id
@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
  
     def current_user
         User.find_by(id:session[:user_id])
+    end
+
+    def current_cart
+        Cart.find_by(user_id:session[:user_id])
     end
 
     def logged_in?

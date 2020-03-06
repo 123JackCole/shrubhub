@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_002222) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
-    t.float "total"
+    t.float "total", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_002222) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "cart_id"
     t.integer "plant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
