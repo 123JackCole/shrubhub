@@ -1,6 +1,9 @@
-Username <%= @user.username %>
+<h1>Username: <%= @user.username %></h1>
 
 <% if @user.id == session[:user_id] %>
-    <div><%= button_to "EDIT ACCOUNT", edit_user_path, method: :edit %></div>
+    <div><%= button_to "EDIT ACCOUNT", edit_user_path, method: :edit %></div><br>
     <div><%= button_to "DELETE ACCOUNT", "/users/delete", method: :delete %></div>
 <% end %>
+<br>
+
+<%= render "plants" %>

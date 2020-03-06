@@ -1,18 +1,15 @@
 class CartsController < ApplicationController
 
-    def index
-        
-    end
-
     def show
-        
+        @cart = current_cart
     end
 
     def update
-        add_plant_to_cart(params[:plants_id])
-    end 
+        add_plant_to_cart(params[:plant_id])
+    end
 
     def delete
         session.delete(:cart)
-    end 
+    end
+    
 end

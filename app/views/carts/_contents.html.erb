@@ -1,0 +1,18 @@
+<% @plants = Plant.all %>
+<% if current_cart.length >= 0 %>
+    <h2>Your cart:</h2><br>
+<% else %>
+    <h2>You currently have no plants in your cart</h2><br>
+<% end %>
+
+<% @plants.each do |plant| %>
+    <% if current_cart.include?(plant.id) %>
+        <div>Plant Name: <%= link_to plant.name, plant %></div><br>
+        <div><img src="<%= plant.image %>" width=40%></div><br>
+        <div>Description: <%= plant.description%></div><br>
+        <div>Price: $<%= plant.price %></div><br>
+        <div>Light Instructions: <%= plant.light_instructions %></div><br>
+        <div>Watering Instructions: <%= plant.water_instructions %></div><br>
+        <div>Other Instructions: <%= plant.other_instructions %></div><br>
+    <% end %>
+<% end %>

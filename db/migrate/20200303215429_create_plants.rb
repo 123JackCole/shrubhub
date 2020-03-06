@@ -2,7 +2,6 @@ class CreatePlants < ActiveRecord::Migration[6.0]
   def change
     create_table :plants do |t|
       t.integer :user_id
-      t.integer :order_id, default: nil
       t.string :name
       t.string :description
       t.string :image

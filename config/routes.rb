@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :carts
   root 'plants#index'
 
   resources :comments, only: [:index, :show, :new, :create, :edit, :update, :destroy]

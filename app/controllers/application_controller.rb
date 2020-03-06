@@ -27,18 +27,22 @@ class ApplicationController < ActionController::Base
     end
 
     def add_plant_to_cart(plant_id)
-        if cart.include(plant_id)
+        if current_cart.include?(plant_id)
             flash[:notice] = "That item is already in your cart"
+            redirect_to :root
         else
             current_cart << plant_id
-        end 
+            redirect_to orders_path
+        end
     end
 
     def remove_plant_from_cart(plant_id)
         if cart[plant_id]
             current_cart.delete(current_cart.find(plant_id).id)
+            redirect_to orders_path
         else
             flash[:notice] = "That item isn't in your cart"
+            redirect_to orders_path
         end
     end
 
