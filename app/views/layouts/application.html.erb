@@ -16,7 +16,7 @@
         <p><%= link_to "ShrubHub", :root %></p>
         <% if logged_in? %>
           <p><%= link_to "Sell a Plant!", new_plant_path %></p>
-          <p><%= link_to "Cart", orders_path %></p>
+          <p><%= link_to "Cart", carts_path %></p>
           <p><%= link_to "Account", user_path(current_user) %></p>
           <p><%= link_to "Log Out", logout_path %></p>
         <% else %>

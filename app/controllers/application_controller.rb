@@ -22,37 +22,33 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def current_cart
-        session[:cart] ||= []
-    end
+    # def add_plant_to_cart(plant_id)
+    #     if current_cart.include?(plant_id)
+    #         flash[:notice] = "That item is already in your cart"
+    #         redirect_to :root
+    #     else
+    #         current_cart << plant_id
+    #         redirect_to carts_path
+    #     end
+    # end
 
-    def add_plant_to_cart(plant_id)
-        if current_cart.include?(plant_id)
-            flash[:notice] = "That item is already in your cart"
-            redirect_to :root
-        else
-            current_cart << plant_id
-            redirect_to orders_path
-        end
-    end
+    # def remove_plant_from_cart(plant_id)
+    #     if cart[plant_id]
+    #         current_cart.delete(current_cart.find(plant_id).id)
+    #         redirect_to carts_path
+    #     else
+    #         flash[:notice] = "That item isn't in your cart"
+    #         redirect_to carts_path
+    #     end
+    # end
 
-    def remove_plant_from_cart(plant_id)
-        if cart[plant_id]
-            current_cart.delete(current_cart.find(plant_id).id)
-            redirect_to orders_path
-        else
-            flash[:notice] = "That item isn't in your cart"
-            redirect_to orders_path
-        end
-    end
-
-    def get_plants_from_cart
-        @cart_plants = Plant.find(cart.keys)
-        @total = 0
-        @cart_plants.each do |plant|
-            price = cart[plant.id.to_s] * plant.price
-            @total += price
-        end
-    end
+    # def get_plants_from_cart
+    #     @cart_plants = Plant.find(cart.keys)
+    #     @total = 0
+    #     @cart_plants.each do |plant|
+    #         price = cart[plant.id.to_s] * plant.price
+    #         @total += price
+    #     end
+    # end
 
 end

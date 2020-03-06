@@ -1,8 +1,7 @@
 class Plant < ApplicationRecord
     belongs_to :user
-    has_many :orders, optional: true
+    has_many :orders
     has_many :comments
-    # has_many :categories
 
     validates :name, presence: true
     validates :description, presence: true

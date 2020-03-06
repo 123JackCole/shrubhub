@@ -1,0 +1,12 @@
+<div>Plant Name: <%= @cart.name%></div><br>
+<div><img src="<%= @cart.image %>" width=40%></div><br>
+<div>Description: <%= @cart.description%></div><br>
+<div>Price: $<%= @cart.price %></div><br>
+<div>Light Instructions: <%= @cart.light_instructions %></div><br>
+<div>Watering Instructions: <%= @cart.water_instructions %></div><br>
+<div>Other Instructions: <%= @cart.other_instructions %></div><br>
+
+<% if @cart.user_id == current_cart.id %>
+    <div><%= button_to "Edit Listing", edit_cart_path(@cart), method: :get %></div>
+    <div><%= button_to "Delete Listing", "/plants/delete", method: :delete %></div>
+<% end %>

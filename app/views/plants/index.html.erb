@@ -13,7 +13,7 @@
         <div><%= button_to "Delete Listing", "/plants/delete", method: :delete %></div>
     <% else %>
         <div><%= button_to "Add to Cart", orders_path, method: "post", params: {plant_id: plant.id } %></div>
-        <div><%= button_to "Remove From Cart", cart_path %></div>
+        <div><%= button_to "Remove From Cart", orders_path %></div>
     <% end %>
     <br><br>
 <% end %>
