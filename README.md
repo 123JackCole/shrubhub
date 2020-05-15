@@ -18,7 +18,8 @@ ShrubHub is an online ecommerce store in which you can buy or sell plants.
 ## Technology Used
 
 Ruby, 
-ActiveRecord
+ActiveRecord,
+Rails
 
 ---
 
