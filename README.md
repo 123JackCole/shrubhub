@@ -3,6 +3,8 @@ ShrubHub
 
 ShrubHub is an online ecommerce store in which you can buy or sell plants.
 
+Here's a link to a [demo](https://www.youtube.com/watch?v=aocnegVGL8g)
+
 ---
 
 ## Installation
